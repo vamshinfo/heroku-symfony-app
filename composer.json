@@ -13,7 +13,7 @@
     },
     "require": {
         "php": ">=5.3.9",
-        "doctrine/doctrine-bundle": "~1.4",
+        "doctrine/doctrine-bundle": "^1.9",
         "doctrine/orm": "^2.4.8",
         "incenteev/composer-parameter-handler": "~2.0",
         "sensio/distribution-bundle": "~4.0",
@@ -37,6 +37,9 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
         ],
+         "pre-install-cmd": [
+            "HerokuDatabase::populateEnvironment"
+                    ],
         "post-install-cmd": [
             "@symfony-scripts"
         ],
@@ -46,11 +49,7 @@
     },
     "config": {
         "bin-dir": "bin",
-        "platform": {
-            "php": "5.6"
-        },
-        "sort-packages": true
-    },
+            },
     "extra": {
         "symfony-app-dir": "app",
         "symfony-web-dir": "web",
